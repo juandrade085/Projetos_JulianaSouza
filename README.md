@@ -23,7 +23,7 @@ Sim, uso (e abuso) do help() — gosto de entender o que está acontecendo por t
 | Nome do Projeto | Breve explicação                                                | Tecnologias usadas |
 |-----------------|-----------------------------------------------------------------|-------------------|
 | Calendário      | Destacar no calendário o dia da semana em que o usuário nasceu. | Python            |
-| Projeto gestão hospitalar | Sistema de gestáo com cadastro de pacientes, médicos e exames. Agendamento de onsultas e exames com controle de horários disponíveis, incluindo histórico de atendimento e gerando relatórios mensais. | Python            |
+| Projeto gestão hospitalar | Sistema de gestão com cadastro de pacientes, médicos e exames. Agendamento de onsultas e exames com controle de horários disponíveis, incluindo histórico de atendimento e gerando relatórios mensais. | Python            |
 
 ---
 
@@ -41,5 +41,5 @@ Brincadeiras à parte, fique à vontade para deixar uma dica, ideia ou feedback 
 ---
 
 ## 📫 Vamos nos conectar?
-- 💼 [LinkedIn](https://www.linkedin.com/in/juandrade085/)👆
+- 💼 [LinkedIn](https://www.linkedin.com/in/juandrade085/)
 - 📧 **julianatechpt@gmail.com**
