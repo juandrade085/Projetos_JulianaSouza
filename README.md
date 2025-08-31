@@ -41,7 +41,5 @@ Brincadeiras à parte, fique à vontade para deixar uma dica, ideia ou feedback 
 ---
 
 ## 📫 Vamos nos conectar?
-
-![QR LinkedIn](img/linkedin_qrcode_JulianaSouza.png)
 - 💼 [LinkedIn](https://www.linkedin.com/in/juandrade085/)👆
 - 📧 **julianatechpt@gmail.com**
