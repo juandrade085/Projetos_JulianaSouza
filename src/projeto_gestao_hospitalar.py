@@ -15,27 +15,39 @@ while True:
 
     if resposta == 1:
         while True:
-            sub_resposta = menu(['Cadastro de Pacientes', 'Cadastro de Médicos', 'Cadastro de Exames', 'Voltar'], titulo='CADASTROS')
+            sub_resposta = menu(
+                ['Cadastro de Pacientes', 'Cadastro de Médicos', 'Cadastro de Exames', 'Voltar'],
+                titulo='CADASTROS'
+            )
+
             if sub_resposta == 1:
+                nome_opcao = 'Cadastros'
                 cabecalho('NOVO PACIENTE - CADASTRO')
                 paciente = cadastro_paciente()
                 if paciente:
-                    print(f"Paciente {paciente['nome']} {paciente['sobrenome']} cadastrado(a) com sucesso!")
+                    print(f"✅ Paciente {paciente['nome']} {paciente['sobrenome']} cadastrado(a) com sucesso!")
                 else:
                     print("❌ Cadastro falhou. Verifique os dados e tente novamente.")
-                print(f"Paciente {paciente['nome']} {paciente['sobrenome']} cadastrado(a) com sucesso!")
+                if continuar(nome_opcao)  == 'N':
+                    print('Retornando ao menu principal...')
+                    break  # Sai do loop e volta ao menu principal
+
             elif sub_resposta == 2:
                 cabecalho('NOVO MÉDICO - CADASTRO')
                 medico = cadastro_medico()
-                print(f"Médico {medico['nome']} {medico['sobrenome']} cadastrado(a) com sucesso!")
+                print(f"✅ Médico {medico['nome']} {medico['sobrenome']} cadastrado(a) com sucesso!")
+                if continuar(nome_opcao)  == 'N':
+                    print('Retornando ao menu principal...')
+                    break  # Sai do loop e volta ao menu principal
+
             elif sub_resposta == 4:
                 break  # Volta para o Menu Principal
 
-            continuar = ''
-            while continuar not in 'SN':
-                continuar = input('Deseja continuar em CADASTROS? [S/N] ').strip().upper()[0]
-            if continuar == 'N':
+            elif resposta == 4:
+                cabecalho('Saindo do Sistema... Até logo!')
                 break
+
+
 """elif sub_resposta == 3:
     cabecalho('NOVO EXAME - CADASTRO')
     exame = cadastro_exame()
@@ -58,9 +70,7 @@ while True:
         if continuar == 'N':
             continue  # volta ao menu principal
 
-    elif resposta == 4:
-        cabecalho('Saindo do Sistema... Até logo!')
-        break"""
+    """
 
 
 

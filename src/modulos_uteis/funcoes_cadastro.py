@@ -65,39 +65,42 @@ def lerArquivo(nome):
     finally:
         a.close()
 
+
 def cadastro_paciente():
     try:
+        # Validação do nome
         while True:
             nome = input("Nome do Paciente: ").strip().title()
-            if nome.replace(" ", "").isalpha(): # VERIFICAÇÃO NOME
+            if nome.replace(" ", "").isalpha():
                 break
             print("❌ Nome inválido. Digite apenas letras.")
 
-        # 🔹 Validação do sobrenome
+        # Validação do sobrenome
         while True:
             sobrenome = input("Sobrenome do Paciente: ").strip().title()
-            if sobrenome.replace(" ", "").isalpha(): # VERIFICAÇÃO SOBRENOME
+            if sobrenome.replace(" ", "").isalpha():
                 break
             print("❌ Sobrenome inválido. Digite apenas letras.")
 
-        # 🔹 Validação da data de nascimento
+        # Validação da data de nascimento
         while True:
             data_nascimento_str = input("Data de Nascimento (dd/mm/aaaa): ").strip()
             if not data_nascimento_str:
-                print("❌ Data de nascimento não pode estar vazia.") # VERIFICAÇÃO DATA DE NASCIMENTO
+                print("❌ Data de nascimento não pode estar vazia.")
                 continue
 
             idade, dias_com_idade_nova = calcular_idade_e_dias(data_nascimento_str)
             if idade is None:
-                print("❌ Data inválida. Use o formato dd/mm/aaaa.") # VERIFICAÇÃO IDADE
+                print("❌ Data inválida. Use o formato dd/mm/aaaa.")
                 continue
 
             nascimento = datetime.strptime(data_nascimento_str, "%d/%m/%Y").date()
             if nascimento > date.today():
-                print("❌ Data de nascimento não pode ser no futuro.") # VERIFICAÇÃO DATA FUTURA
+                print("❌ Data de nascimento não pode ser no futuro.")
                 continue
 
             break
+
         return {
             "nome": nome,
             "sobrenome": sobrenome,
@@ -109,6 +112,9 @@ def cadastro_paciente():
         print(f"Erro inesperado: {e}")
         return None
 
+
+
+
 def cadastro_medico():
     nome = input("Nome do Médico: ").title()
     sobrenome = input("Sobrenome do Paciente: ").title()
@@ -118,3 +124,11 @@ def cadastro_medico():
         "sobrenome": sobrenome,
         "espacialidade" : Espacialidade
     }
+
+def continuar(opcao):
+    while True:
+        resp = input(f'Quer continuar em {opcao}? [S/N] ').strip().upper()[0]
+        if resp in 'SN':
+            return resp
+        print('ERRO! Responda apenas S ou N.')
+
