@@ -31,3 +31,11 @@ def menu(lista, titulo='MENU PRINCIPAL'):
         print(f'\033[33m{i}\033[m - \033[34m{item}\033[m')
     print(decoracao())
     return leiaInt('\033[32mSua Opção:\033[m ')
+
+def menu_especialidades_medicas(lista, titulo='ESPCIALIDADES MÉDICAS'):
+    cabecalho(titulo)
+    menu_especialidades_medicas = ['Clínico Geral', 'Cardiologia', 'Dermatologia', 'Neurologia', 'Pediatria', 'Psiquiatria']
+    for i, item in enumerate(lista, start=1):
+        print(f'\033[33m{i}\033[m - \033[34m{item}\033[m')
+    print(decoracao())
+    return leiaInt('\033[32mSua Opção:\033[m ')

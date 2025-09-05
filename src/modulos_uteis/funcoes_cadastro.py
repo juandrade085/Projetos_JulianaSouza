@@ -3,9 +3,11 @@
  - projeto_gestao_hospitalar.py"""
 
 
-
-from modulos_uteis.funcoes_decoracao import cabecalho
+from modulos_uteis.funcoes_decoracao import cabecalho,menu_especialidades_medicas
 from datetime import datetime, date
+import csv
+import os
+
 
 # DATA E HORA ATUAL
 
@@ -112,17 +114,54 @@ def cadastro_paciente():
         print(f"Erro inesperado: {e}")
         return None
 
-
-
-
 def cadastro_medico():
     nome = input("Nome do Médico: ").title()
-    sobrenome = input("Sobrenome do Paciente: ").title()
-    Espacialidade = input("Espacialidade: ").title()
+    sobrenome = input("Sobrenome do Médico: ").title()
+    
+    opcoes_especialidades = [
+        'Clínico Geral', 'Cardiologia', 'Dermatologia',
+        'Neurologia', 'Pediatria', 'Plástica',
+        'Psicologia', 'Psiquiatria', 'Voltar'
+    ]
+    
+    while True:
+        escolha = menu_especialidades_medicas(opcoes_especialidades)
+        
+        if escolha == len(opcoes_especialidades):  # Se for 'Voltar'
+            print("🔙 Retornando ao menu anterior...")
+            return None
+        
+        elif 1 <= escolha < len(opcoes_especialidades):
+            especialidade = opcoes_especialidades[escolha - 1]
+            break
+        else:
+            print("❌ Especialidade inválida. Tente novamente.")
+
     return {
         "nome": nome,
         "sobrenome": sobrenome,
-        "espacialidade" : Espacialidade
+        "especialidade": especialidade
+    }
+
+def cadastro_exame():
+    nome = input("Nome do Exame: ").title()
+    while True:
+        escolha = menu_especialidades_medicas(opcoes_especialidades)
+        
+        if escolha == len(opcoes_especialidades):  # Se for 'Voltar'
+            print("🔙 Retornando ao menu anterior...")
+            return None
+        
+        elif 1 <= escolha < len(opcoes_especialidades):
+            especialidade = opcoes_especialidades[escolha - 1]
+            break
+        else:
+            print("❌ Especialidade inválida. Tente novamente.")
+
+    return {
+        "nome": nome,
+        "sobrenome": sobrenome,
+        "especialidade": especialidade
     }
 
 def continuar(opcao):
@@ -131,4 +170,5 @@ def continuar(opcao):
         if resp in 'SN':
             return resp
         print('ERRO! Responda apenas S ou N.')
+
 
