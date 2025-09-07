@@ -32,10 +32,15 @@ def menu(lista, titulo='MENU PRINCIPAL'):
     print(decoracao())
     return leiaInt('\033[32mSua Opção:\033[m ')
 
-def menu_especialidades_medicas(lista, titulo='ESPCIALIDADES MÉDICAS'):
+def menu_especialidades_medicas(titulo='ESPECIALIDADES MÉDICAS'):
+    opcoes = [
+        'Clínico Geral', 'Cardiologia', 'Dermatologia',
+        'Neurologia', 'Pediatria', 'Plástica',
+        'Psicologia', 'Psiquiatria', 'Voltar'
+    ]
     cabecalho(titulo)
-    menu_especialidades_medicas = ['Clínico Geral', 'Cardiologia', 'Dermatologia', 'Neurologia', 'Pediatria', 'Psiquiatria']
-    for i, item in enumerate(lista, start=1):
+    for i, item in enumerate(opcoes, start=1):
         print(f'\033[33m{i}\033[m - \033[34m{item}\033[m')
     print(decoracao())
-    return leiaInt('\033[32mSua Opção:\033[m ')
+    escolha = leiaInt('\033[32mSua Opção:\033[m ')
+    return escolha, opcoes

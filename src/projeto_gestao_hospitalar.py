@@ -1,14 +1,14 @@
 # SISTEMA
 
+from modulos_uteis.funcoes_cadastro import cadastro_paciente, cadastro_medico, cadastro_exame, continuar
+from modulos_uteis.funcoes_decoracao import cabecalho, menu, menu_especialidades_medicas
+from modulos_uteis.funcoes_arquivo import salvar_csv, ler_csv
+import os
 
-from modulos_uteis.funcoes_cadastro import *
-
-from modulos_uteis.funcoes_decoracao import *
 
 # Exibe o cabeçalho decorado
 
 cabecalho ('CLÍNICA VIDA+')
-
 
 while True:
     resposta = menu(['Cadastros', 'Agendamentos', 'Relatórios', 'Sair do Sistema'])
@@ -24,7 +24,7 @@ while True:
                 cabecalho('NOVO PACIENTE - CADASTRO')
                 paciente = cadastro_paciente()
                 if paciente:
-                    print(f"✅ Paciente {paciente['nome']} {paciente['sobrenome']} cadastrado(a) com sucesso!")
+                    print(f"✅ Paciente {paciente['nome_paciente']} {paciente['sobrenome_paciente']} cadastrado(a) com sucesso!")
                 else:
                     print("❌ Cadastro falhou. Verifique os dados e tente novamente.")
                 if continuar(nome_opcao)  == 'N':
@@ -32,25 +32,25 @@ while True:
                     break  # Sai do loop e volta ao menu principal
 
             elif sub_resposta == 2:
-                arquivo_csv = "basededados_medicos.csv"
-                if os.path.exists(arquivo_csv):
-                    print("O arquivo já existe. Vamos apenas adicionar novos médicos.")
-                else:
-                    print(f"Criando '{arquivo_csv}'...")
                 cabecalho('NOVO MÉDICO - CADASTRO')
                 medico = cadastro_medico()
                 if medico:
-                    print(f"✅ Médico {medico['nome']} {medico['sobrenome']} - {medico['especialidade']} cadastrado(a) com sucesso!")
+                    print(f"✅ Médico(a) {medico['nome_medico']} {medico['sobrenome_medico']} - {medico['especialidade']} cadastrado(a) com sucesso!")
                     if continuar(nome_opcao) == 'N':
                         print('Retornando ao menu principal...')
                         break
                 else:
                     print("🔙 Cadastro cancelado. Retornando ao menu de cadastros...")
             elif sub_resposta == 3:
+                arquivo_csv = "basededados_exames.csv"
+                if os.path.exists(arquivo_csv):
+                    print("O arquivo já existe. Vamos apenas cadastrar um novo exame.")
+                else:
+                    print(f"Criando '{arquivo_csv}'...")
                 cabecalho('NOVO EXAME - CADASTRO')
-                medico = cadastro_medico()
+                exame = cadastro_exame()
                 if medico:
-                    print(f"✅ Médico {medico['nome']} {medico['sobrenome']} - {medico['especialidade']} cadastrado(a) com sucesso!")
+                    print(f"✅ Exame {exame['nome_exame']} da especialidade {menu_especialidades_medicas} -  cadastrado(a) com sucesso!")
                     if continuar(nome_opcao) == 'N':
                         print('Retornando ao menu principal...')
                         break
@@ -64,15 +64,8 @@ while True:
                 cabecalho('Saindo do Sistema... Até logo!')
                 break
 
-    if resposta == 3:
-        cabecalho('RELATÓRIOS - EM CONSTRUÇÃO')
-        nome_opcao = 'Cadastros'
-        while True:
-            sub_resposta = menu(
-                ['Relatórios de Pacientes', 'Relatórios de Médicos', 'Relatórios de Exames', 'Voltar']
-                titulo = 'nome_opcao'
-            )
-            if sub_resposta == 1:
-                print("🔧 Esta funcionalidade está em construção. Por favor, volte mais tarde.")
-            if continuar(nome_opcao) == 'N':
-                print('Retornando ao menu principal...')
+    elif resposta == 4:
+        cabecalho('Saindo do Sistema... Até logo!')
+        break
+    else:
+        print("❌ Opção inválida. Tente novamente.")
