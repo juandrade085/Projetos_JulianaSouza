@@ -107,6 +107,7 @@ def cadastro_medico():
     }
 
 def cadastro_exame():
+    
     nome_exame = input("Nome do Exame: ").title()
     medicos = ler_csv(ARQ_MEDICOS)
 
@@ -116,7 +117,7 @@ def cadastro_exame():
 
     print("\nMédicos disponíveis:")
     for i, m in enumerate(medicos, start=1):
-        print(f"{i} - Dr(a). {m['nome']} {m['sobrenome']} ({m['especialidade']})")
+        print(f"{i} - Dr(a). {m.get('nome_medico')} {m.get('sobrenome_medico')} ({m.get('especialidade')})")
 
     escolha = int(input("Escolha o médico solicitante: "))
     if not (1 <= escolha <= len(medicos)):
@@ -130,6 +131,9 @@ def cadastro_exame():
                cabecalho=["nome_exame", "nome_medico", "sobrenome_medico", "especialidade"])
     return {
         "nome_exame": nome_exame,
+        "nome_medico": medico_escolhido['nome_medico'],
+        "sobrenome_medico": medico_escolhido['sobrenome_medico'],
+        "especialidade": medico_escolhido['especialidade']
     }
 
 def continuar(opcao):

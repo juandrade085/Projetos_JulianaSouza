@@ -42,11 +42,6 @@ while True:
                 else:
                     print("🔙 Cadastro cancelado. Retornando ao menu de cadastros...")
             elif sub_resposta == 3:
-                arquivo_csv = "basededados_exames.csv"
-                if os.path.exists(arquivo_csv):
-                    print("O arquivo já existe. Vamos apenas cadastrar um novo exame.")
-                else:
-                    print(f"Criando '{arquivo_csv}'...")
                 cabecalho('NOVO EXAME - CADASTRO')
                 exame = cadastro_exame()
                 if medico:
